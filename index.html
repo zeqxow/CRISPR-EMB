@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRISPR-Engineered Microbes for Bioremediation</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --btn-bg: #3b82f6;
+            --btn-hover: #2563eb;
+            --btn-active: #10b981;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            max-width: 750px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            background-color: #475569;
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .speaking {
+            background-color: var(--btn-active) !important;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .image-container {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #020617;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .counter {
+            margin: 15px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-controls button {
+            flex: 1;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="controls">
+        <button id="langBtn" onclick="toggleLanguage()">🌐 Switch to Hindi</button>
+        <button id="speakBtn" onclick="toggleSpeech()">🎤 Read Text</button>
+    </div>
+
+    <div class="image-container">
+        <img id="viewerImage" src="" alt="CRISPR-Engineered Microbes for Bioremediation Infographic Page">
+    </div>
+
+    <div class="counter" id="pageCounter">Page 1 of 3</div>
+
+    <div class="nav-controls">
+        <button id="prevBtn" onclick="changeImage(-1)">⬅️ Previous</button>
+        <button id="nextBtn" onclick="changeImage(1)">Next ➡️</button>
+    </div>
+</div>
+
+<script>
+    const galleryData = {
+        en: [
+            {
+                url: "CRISPR EMB Eng1.jpeg",
+                text: "CRISPR-Engineered Microbes for Bioremediation: Programming Bacteria to Degrade Plastics, Detoxify Heavy Metals & Neutralize Chemical Pollutants. Living Solutions for Environmental Restoration. Section 1: Why Bioremediation? 400 million tons of plastic per year global waste produced annually; production continues to rise. Heavy metals persist in environment: Lead, Mercury, Cadmium, and Arsenic remain toxic for decades. Chemical pollutants contaminate ecosystems: Oil spills, PAHs, and pesticides pollute soil & waterways. Traditional cleanup is harsh & expensive: Chemical methods are costly, environmentally damaging, and unsustainable. Section 2: Microbial Chassis for Environment. Ideonella sakaiensis (PET degrader, breaks down polyethylyne terephthalate plastic efficiently), Pseudomonas putida (soil versatile metabolizer, broad metabolic capacity for organic pollutants and toxins), Alcanivorax borkumensis (oil degrader, marine specialist in hydrocarbon and oil spill biodegradation), Deinococcus radiodurans (radiation resistant, thrives in radioactive and nuclear waste environments), and Bacillus metallidurans (heavy metal resistant, binds and tolerates lead, cadmium, and mercury). Section 3: CRISPR Engineering Strategies. Cas9 knockout removes competing pathways to redirect metabolism toward degradation. CRISPRa activation upregulates expression of degradation enzymes to boost activity. Knock-in integration inserts PETase and MHETase genes to enable PET plastic breakdown. Base editing precisely edits enzyme active sites to improve catalytic efficiency. Pathway engineering assembles multi-gene operons for complete pollutant degradation."
+            },
+            {
+                url: "CRISPR EMB Eng2.jpeg",
+                text: "Degradation Pathways — How Engineered Microbes Clean. Engineered microbes break down pollutants through natural and enhanced biological processes. Section 1: Consuming Plastics. PET plastic bottle converted by Ideonella sakaiensis engineered with PETase enzyme to hydrolyze PET to MHET, then MHETase converts MHET to TPA + EG, which enters metabolism as a carbon source. Recent engineered FAST-PETase degrades PET in days, not decades: accelerated enzyme variant designed for rapid PET breakdown. PE polyethylene: alkB oxidation oxidizes polyethylene chains to enable biodegradation. Section 2: Neutralizing Heavy Metals. Biosorption: surface metallothioneins (MT) bind lead, mercury, and cadmium. Bioaccumulation: intracellular sequestration stored safely within microbial cells. Biotransformation Mercury: Mercuric reductase (MerA) converts Hg2+ (toxic) to Hg0 (volatile, less toxic). Biotransformation Arsenic: ArsC reduces arsenate As5+ to As3+ for detoxification & export. Lead Precipitation: forms insoluble lead phosphate precipitate, immobilizing lead to prevent mobility. Section 3: Breaking Down Chemical Pollutants. Oil spills: Alcanivorax alkane hydroxylase (alkB) degrades alkanes into fatty acids. PAHs: dioxygenases break aromatic rings into harmless compounds & CO2. Pesticides: organophosphorus hydrolase (OPH) degrades parathion & glyphosate. Toluene & Xylene: TOD pathway metabolizes toluene & xylene to CO2 + water via catechol oxidation. Key benefit: Engineered microbes convert pollutants into CO2, water, and biomass — safe, natural, sustainable remediation."
+            },
+            {
+                url: "CRISPR EMB Eng3.jpeg",
+                text: "Deployment, Safety & Future of Bioremediation. Section 1: Field Deployment. Bioaugmentation: add engineered microbes to contaminated site. Biostimulation: CRISPR enhanced indigenous microbes. Contained bioreactors: ex-situ treatment in sealed reactors. Marine oil spill: spray engineered Alcanivorax bacteria. Soil heavy metals: immobilization to reduce bioavailability. Section 2: Biosafety & Containment diagram. Kill switch auxotrophy: requires synthetic amino acid to survive; cells die without it outside site. Toxin-antitoxin: programmed cell death activates outside contamination zone. Gene transfer barrier: conjugation genes removed to prevent horizontal gene transfer. Sensors: sense & respond circuit detects pollutant concentration; activates only when pollutant is present. Section 3: Challenges & Future. Current Challenges: Survival competition with native flora; Risk of engineered gene escape via horizontal transfer; Public acceptance & evolving GMO regulations. Future Directions: FAST-PETase in Pseudomonas for mixed plastics degradation; Multi-functional microbe — one strain degrades plastic + chelates metals; AI-designed enzymes via CRISPR base editing; Circular bioeconomy — convert plastic waste to value-added chemicals & PHA bioplastics. From Pollution to Solution: engineered microbes transform waste into resources."
+            }
+        ],
+        hi: [
+            {
+                url: "CRISPR EMB Hin1.jpeg",
+                text: "CRISPR-इंजीनियर्ड रोगाणु बायोरेमेडिएशन के लिए: प्लास्टिक को नष्ट करने, भारी धातुओं को विषमुक्त करने और रासायनिक प्रदूषकों को निष्प्रभावी करने के लिए बैक्टीरिया प्रोग्रामिंग। पर्यावरण बहाली के लिए जीवित समाधान। खंड 1: बायोरेमेडिएशन क्यों? 400M टन प्लास्टिक/वर्ष: वैश्विक प्लास्टिक कचरा वार्षिक उत्पादन; उत्पादन बढ़ता जारी। भारी धातुएं पर्यावरण में बनी रहती हैं: सीसा, पारा, कैडमियम, आर्सेनिक दशकों तक जहरीले रहते हैं। रासायनिक प्रदूषक पारिस्थितिकी तंत्र को दूषित करते हैं: तेल रिसाव, PAHs, कीटनाशक मिट्टी और जलमार्ग प्रदूषित करते हैं। पारंपरिक सफाई कठोर और महंगी: रासायनिक तरीके महंगे, पर्यावरण को नुकसानदेह, अस्थिर। खंड 2: पर्यावरण के लिए माइक्रोबियल चेसिस। इडियोनेला साकाइएंसिस (PET विघटनकर्ता, पॉलीइथलीन टेरेफ्थेलेट प्लास्टिक को कुशलता से तोड़ता है), स्यूडोमोनास पुटिडा (मिट्टी, बहुमुखी चयापचय, कार्बनिक प्रदूषकों और विषाक्त पदार्थों के लिए व्यापक क्षमता), एल्केनिवोरैक्स बोरकुमेंसिस (तेल विघटनकर्ता, समुद्री, हाइड्रोकार्बन और तेल रिसाव बायोडिग्रेडेशन में विशेषज्ञ), डाइनोकोकस रेडियोड्यूरान्स (विकिरण प्रतिरोधी, रेडियोधर्मी और परमाणु कचरा वातावरण में पनपता है), और बैसिलस मेटालिड्यूरान्स (भारी धातु प्रतिरोधी, सीसा, कैडमियम और पारा को बांधता और सहता है)। खंड 3: CRISPR इंजीनियरिंग रणनीतियाँ। Cas9 नॉकआउट: प्रतिस्पर्धी मार्ग हटाएं, चयापचय को अपघटन की ओर मोड़ें। CRISPRa सक्रियण: अपघटन एंजाइमों की अभिव्यक्ति बढ़ाएं, गतिविधि बढ़ाने के लिए। नॉक-इन एकीकरण: PETase और MHETase जीन डालें, PET प्लास्टिक अपघटन सक्षम करने के लिए। बेस संपादन: एंजाइम सक्रिय स्थलों को सटीक संपादित करें, उत्प्रेरक दक्षता सुधारने के लिए। मार्ग इंजीनियरिंग: पूर्ण प्रदूषक अपघटन के लिए बहु-जीन ऑपेरॉन इकट्ठा करें।"
+            },
+            {
+                url: "CRISPR EMB Hin2.jpeg",
+                text: "अपघटन मार्ग — इंजीनियर्ड रोगाणु कैसे सफाई करते हैं। इंजीनियर्ड रोगाणु प्राकृतिक और उन्नत जैविक प्रक्रियाओं के माध्यम से प्रदूषकों को तोड़ते हैं। खंड 1: प्लास्टिक उपभोग। PET प्लास्टिक बोतल इडियोनेला साकाइएंसिस PETase एंजाइम के साथ इंजीनियर्ड PET को MHET में हाइड्रोलाइज़ करता है, MHETase MHET को TPA + EG में बदलता है, TPA + EG चयापचय में कार्बन स्रोत के रूप में प्रवेश करते हैं। हाल ही में इंजीनियर्ड FAST-PETase दिनों में PET को नष्ट करता है दशकों में नहीं: त्वरित PET अपघटन के लिए डिज़ाइन किया गया त्वरित एंजाइम वेरिएंट। PE पॉलीइथलीन: alkB ऑक्सीकरण पॉलीइथलीन श्रृंखलाओं को ऑक्सीकृत करता है बायोडिग्रेडेशन सक्षम करने के लिए। खंड 2: भारी धातुओं को निष्प्रभावी करना। बायोसोर्प्शन: सतह मेटलोथायोनिन (MT) सीसा, पारा, कैडमियम बांधते हैं। बायोएक्यूमुलेशन: इंट्रासेल्युलर सीक्वेस्ट्रेशन माइक्रोबियल कोशिकाओं के भीतर सुरक्षित संग्रहित। बायोट्रांसफॉर्मेशन पारा: मरक्यूरिक रिडक्टेज (MerA) Hg2+ (जहरीला) को Hg0 (वाष्पशील, कम जहरीला) में बदलता है। बायोट्रांसफॉर्मेशन आर्सेनिक: ArsC आर्सेनेट As5+ को As3+ में घटाता है विषहरण और निर्यात के लिए। सीसा अवक्षेपण: अघुलनशील लेड फॉस्फेट अवक्षेप बनाता है, सीसा की गतिशीलता रोकने के लिए स्थिरीकरण। खंड 3: रासायनिक प्रदूषकों को तोड़ना। तेल रिसाव: एल्केनिवोरैक्स एल्केन हाइड्रॉक्सिलेज़ (alkB) एल्केन को फैटी एसिड में तोड़ता है। PAHs: डाइऑक्सीजनेज़ एरोमैटिक रिंग को हानिरहित यौगिकों और CO2 में तोड़ते हैं। कीटनाशक: ऑर्गैनोफॉस्फोरस हाइड्रोलेज (OPH) पैराथियोन और ग्लाइफोसेट को नष्ट करता है। टोल्यूनि और जाइलीन: TOD मार्ग टोल्यूनि और जाइलीन को CO2 + पानी में कैटेकोल ऑक्सीकरण द्वारा चयापचय करता है। मुख्य लाभ: इंजीनियर्ड रोगाणु प्रदूषकों को CO2, पानी और बायोमास में बदलते हैं — सुरक्षित, प्राकृतिक, टिकाऊ उपचार।"
+            },
+            {
+                url: "CRISPR EMB Hin3.jpeg",
+                text: "परिनियोजन, सुरक्षा और बायोरेमेडिएशन का भविष्य। खंड 1: क्षेत्र परिनियोजन। बायोऑगमेंटेशन: दूषित स्थल पर इंजीनियर्ड रोगाणु जोड़ें। बायोस्टिम्यूलेशन: CRISPR उन्नत स्वदेशी रोगाणु। बंद बायोरिएक्टर: सीलबंद रिएक्टरों में एक्स-सीटू उपचार। समुद्री तेल रिसाव: इंजीनियर्ड एल्केनिवोरैक्स बैक्टीरिया छिड़कें। मिट्टी भारी धातुएं: जैवउपलब्धता कम करने के लिए स्थिरीकरण। खंड 2: जैव सुरक्षा और नियंत्रण आरेख। किल स्विच ऑक्सोट्रॉफी: जीवित रहने के लिए सिंथेटिक अमीनो एसिड चाहिए; स्थल के बाहर इसके बिना कोशिकाएं मर जाती हैं। टॉक्सिन-एंटीटॉक्सिन: प्रोग्राम्ड कोशिका मृत्यु दूषित क्षेत्र के बाहर सक्रिय। जीन स्थानांतरण बाधा: संयुग्मन जीन हटाए गए क्षैतिज जीन स्थानांतरण रोकने के लिए। सेंसर संवेदन और प्रतिक्रिया सर्किट: प्रदूषक सांद्रता का पता लगाता है; केवल तभी सक्रिय होता है जब प्रदूषक मौजूद हो। खंड 3: चुनौतियाँ और भविष्य। वर्तमान चुनौतियाँ: देशी बनस्पति के साथ उत्तरजीविता प्रतिस्पर्धा; क्षैतिज स्थानांतरण द्वारा इंजीनियर्ड जीन बच निकलने का जोखिम; जन स्वीकृति और विकसित हो रहे GMO नियम। भविष्य की दिशाएँ: स्यूडोमोनास में FAST-PETase मिश्रित प्लास्टिक अपघटन के लिए; बहु-कार्यात्मक रोगाणु — एक स्ट्रेन प्लास्टिक नष्ट करता है + धातुओं को चेलेट करता है; CRISPR बेस एडिटिंग के माध्यम से AI-डिज़ाइन किए गए एंजाइम; परिपत्र जैव अर्थव्यवस्था — प्लास्टिक कचरे को मूल्य वर्धित रसायनों और PHA बायोप्लास्टिक में बदलें। प्रदूषण से समाधान तक: इंजीनियर्ड रोगाणु कचरे को संसाधनों में बदलते हैं।"
+            }
+        ]
+    };
+
+    let currentLang = 'en';
+    let currentIndex = 0;
+    const synth = window.speechSynthesis;
+
+    function updatePage() {
+        stopSpeech();
+        const currentData = galleryData[currentLang][currentIndex];
+        
+        document.getElementById('viewerImage').src = currentData.url;
+        document.getElementById('pageCounter').innerText = `Page ${currentIndex + 1} of ${galleryData[currentLang].length}`;
+        
+        document.getElementById('prevBtn').disabled = currentIndex === 0;
+        document.getElementById('nextBtn').disabled = currentIndex === galleryData[currentLang].length - 1;
+        document.getElementById('langBtn').innerText = currentLang === 'en' ? '🌐 Switch to Hindi' : '🌐 Switch to English';
+    }
+
+    function changeImage(direction) {
+        currentIndex += direction;
+        updatePage();
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'hi' : 'en';
+        updatePage();
+    }
+
+    function toggleSpeech() {
+        if (synth.speaking) {
+            stopSpeech();
+            return;
+        }
+
+        const textToRead = galleryData[currentLang][currentIndex].text;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        
+        utterance.lang = currentLang === 'en' ? 'en-US' : 'hi-IN';
+        utterance.rate = 0.95; 
+
+        const speakBtn = document.getElementById('speakBtn');
+        speakBtn.classList.add('speaking');
+        speakBtn.innerText = '⏹️ Stop Reading';
+
+        utterance.onend = () => {
+            resetSpeechUI();
+        };
+
+        utterance.onerror = () => {
+            resetSpeechUI();
+        };
+
+        synth.speak(utterance);
+    }
+
+    function stopSpeech() {
+        if (synth.speaking) {
+            synth.cancel();
+        }
+        resetSpeechUI();
+    }
+
+    function resetSpeechUI() {
+        const speakBtn = document.getElementById('speakBtn');
+        speakBtn.classList.remove('speaking');
+        speakBtn.innerText = '🎤 Read Text';
+    }
+
+    updatePage();
+</script>
+
+</body>
+</html>
